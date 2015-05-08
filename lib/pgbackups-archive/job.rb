@@ -95,7 +95,7 @@ class PgbackupsArchive::Job
 
   def key
     timestamp = created_at.gsub(/\/|\:|\.|\s/, "-").concat(".dump")
-    ["pgbackups", environment, timestamp].compact.join("/")
+    ["pgbackups", ENV["PGBACKUPS_APP"], environment, timestamp].compact.join("/")
   end
 
   def pgbackups_to_keep
